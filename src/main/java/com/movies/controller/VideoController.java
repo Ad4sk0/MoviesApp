@@ -33,7 +33,7 @@ public class VideoController {
             InputStream resource = new ClassPathResource(String.format("media/%s", video.getPath())).getInputStream();
             data = resource.readAllBytes();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
 
         HttpHeaders headers = new HttpHeaders();
